@@ -1,0 +1,1 @@
+Stuff needed to generate .sublime-package, but not intended for users.

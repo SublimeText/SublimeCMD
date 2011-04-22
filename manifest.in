@@ -1,0 +1,14 @@
+include *.txt *.py *.rst *.sublime-*
+exclude *.sublime-project
+
+exclude new_omnibox.py # temporarily
+exclude *.sublime-keymap # temporarily
+
+global-exclude _*.txt
+exclude html_template.txt
+
+exclude setup.py
+
+prune data
+prune dist
+prune tests

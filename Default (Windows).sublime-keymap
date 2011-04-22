@@ -1,0 +1,10 @@
+[
+	{
+		"keys": ["enter"],
+		"command": "exec_cmd",
+		"context":
+		[
+			{ "key": "setting.is_cmd", "operator": "equal", "operand": true }
+		]
+	}
+]
