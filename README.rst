@@ -25,26 +25,25 @@ Getting Started
 
 Download the following items:
 
-* `Latest release`_ of SublimeCMD.
-* Optionally (recommended), `AAAPackageDev`_.
-* Optioanlly, `UberSelection`_.
-* Optionally, `PowershellUtils`_.
+   * \ `Latest release`_ of SublimeCMD.
+   * Optionally (recommended), `AAAPackageDev`_.
+   * Optioanlly, `UberSelection`_.
+   * Optionally, `PowershellUtils`_.
 
-.. _Latest release: asfa
-.. _AAAPackageDev: asdfa
-.. _UberSelection: afafa
-.. _PowershellUtils: asfsda
+.. _Latest release: https://bitbucket.org/guillermooo/sublimecmd/downloads/SublimeCMD.sublime-package
+.. _AAAPackageDev: https://bitbucket.org/guillermooo/aaapackagedev/src
+.. _UberSelection: https://bitbucket.org/guillermooo/uberselection/src
+.. _PowershellUtils: https://bitbucket.org/guillermooo/powershellutils/src
 
 SublimeCMD will eventually depend on AAAPackageDev, so it is recommended that
 you install that package too.
 
-Now install all downloaded ``.sublime-package``s:
+Now install all downloaded ``.sublime-package``\ s:
 
-- If you're running a full installation, simply double click on the file.
-- If you're running a portable installation, perform a `manual installation`_.
+   - If you're running a full installation, simply double click on the file.
+   - If you're running a portable installation, perform a `manual installation`_.
 
-.. _latest release: https:
-.. _manual installation: info
+.. _manual installation: http://sublimetext.info/docs/extensibility/packages.html#installation-of-packages-with-sublime-package-archives
 
 Lastly, run ``sublime_cmd`` from the Python console or bind this command to a
 key combination.
@@ -55,9 +54,9 @@ How to Use
 
 SublimeCMD understands the following types of commands:
 
-* Intrinsic SublimeCMD commands.
-* UberSelection commands (see UberSelection docs).
-* PowershellUtils commands (see PowershellUtils docs).
+   * Intrinsic SublimeCMD commands.
+   * UberSelection commands (see UberSelection docs).
+   * PowershellUtils commands (see PowershellUtils docs).
 
 Type commands at the SublimeCMD prompt and press ``enter``.
 
@@ -76,7 +75,7 @@ predicates may be simple patterns like ``hell? world`` or ``hell? w*``.
    Runs or searches commands depending on the modifiers.
 
 ``set``
-   Sets or searches settings depending on modifiers.
+   Sets or searches settings depending on the modifiers.
 
 Modifiers
 ---------
