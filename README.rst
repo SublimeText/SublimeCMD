@@ -14,10 +14,10 @@ dedicated command processor for these task can improve the experience.
 Feature Overview
 ****************
 
-- Commands to explore settings, commands and keybindings, and to run commands
-  conveniently by name.
-- Integration with PowershellUtils package (if available).
-- Integration with UberSelection package (if available).
+   - Commands to explore settings, commands and keybindings, and to run commands
+     conveniently by name.
+   - Integration with PowershellUtils package (if available).
+   - Integration with UberSelection package (if available).
 
 
 Getting Started
@@ -27,7 +27,7 @@ Download the following items:
 
    * \ `Latest release`_ of SublimeCMD.
    * Optionally (recommended), `AAAPackageDev`_.
-   * Optioanlly, `UberSelection`_.
+   * Optionally, `UberSelection`_.
    * Optionally, `PowershellUtils`_.
 
 .. _Latest release: https://bitbucket.org/guillermooo/sublimecmd/downloads/SublimeCMD.sublime-package
@@ -66,10 +66,10 @@ Intrinsic Commands
 
 Syntax:
 
-   - ``<COMMAND>[<MODIFIER>] <PREDICATE>``
+   - ``<COMMAND>[<MODIFIER>] <ARGUMENTS>``
 
-At the moment, a predicate is always required, even if it's ignored. Some
-predicates may be simple patterns like ``hell? world`` or ``hell? w*``.
+At the moment, an argument is always required, even if it's ignored. Some
+arguments may be simple patterns like ``hell? world`` or ``hell? w*``.
 
 ``run``
    Runs or searches commands depending on the modifiers.
@@ -81,7 +81,7 @@ Modifiers
 ---------
 
 ``?``
-   Performs a query based on the predicate.
+   Performs a query based on the argument.
 
 ``!``
    Generally forces verbose output from queries. If combined with query, must
@@ -118,10 +118,10 @@ the order they are applied.
 
    run:w increase_font_size
 
-This command runs the given predicate as a window command.
+This command runs the given argument as a window command.
 
 ::
 
    run!? .
 
-This command shows all found commands. Note the predicate is ignored.
+This command shows all found commands. Note the argument is ignored.
