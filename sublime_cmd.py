@@ -94,10 +94,6 @@ def to_json_type(v):
     return v
 
 
-def starts_with_any(s, sequence):
-    return any(map(s.startswith, sequence))
-    
-
 class SublimeCmdCommand(sublime_plugin.TextCommand):
     def run(self, edit):
         self.window = self.view.window()
