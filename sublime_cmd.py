@@ -9,6 +9,8 @@ import contextlib
 
 import cmd_parser
 
+import sublime_lib.view as vlib
+
 
 TOKEN_TARGET_APPLICATION = 0
 TOKEN_TARGET_WINDOW = 1
@@ -18,29 +20,6 @@ TOKEN_ACTION_QUERY = 3
 TOKEN_ACTION_EXECUTE = 4
 
 TOKEN_OPTION_FORCE = 5
-
-
-@contextlib.contextmanager
-def in_one_edit(view):
-    """Context manager to group edits in a view.
-
-        Example:
-            ...
-            with in_one_edit(view):
-                ...
-            ...
-    """
-    try:
-        edit = view.begin_edit()
-        yield edit
-    finally:
-        view.end_edit(edit)
-
-
-def append(view, text):
-    """Appends text to view."""
-    with in_one_edit(view) as edit:
-        view.insert(edit, view.size(), text)
 
 
 def equals_any(what, seq, comp_func=None):
@@ -84,8 +63,9 @@ def strip_comments(json_fname):
 
 def get_merged_settings(fname):
     merged_settings = {}
- 
-    for f in in_merge_order((fname, 'Base File.sublime-settings')):
+    # Order isn't correct if a settings file name starts lower than Base File.
+    # Maybe order settings once collected?
+    for f in in_merge_order(('Base File.sublime-settings', fname)):
         lines = strip_comments(f)
         fake_fh = StringIO.StringIO('\n'.join(lines))
         settings_raw = json.load(fake_fh)
@@ -135,24 +115,25 @@ class InspectFileSettingsCommand(sublime_plugin.TextCommand):
         out_view = self.view.window().new_file()
         out_view.set_scratch(True)
 
-        append(out_view, "=" * 79 + "\n")
-        append(out_view, "Settings for: %s\n" % self.view.file_name())
-        append(out_view, "-" * 79)
-        append(out_view, '\n')
+        vlib.append(out_view, "=" * 79 + "\n")
+        vlib.append(out_view, "Settings for: %s\n" % self.view.file_name())
+        vlib.append(out_view, "-" * 79)
+        vlib.append(out_view, '\n')
 
         for k, v in settings.iteritems():
             if fnmatch.fnmatch(k, pattern):
-                append(out_view, k + ":\n")
+                vlib.append(out_view, k + ":\n")
                 last = None
                 for location, value in v:
                     location = location[location.find('Packages'):]
-                    append(out_view, "\t%s\t\t\t%s\n" % (value, location))
+                    vlib.append(out_view, "\t%s\t\t\t%s\n" % (value, location))
                     last = value
                 session_value = self.view.settings().get(k)
                 if session_value != last:
-                    append(out_view, "\t%s\t\t\t%s\n" % (self.view.settings().get(k), "Session"))
-                append(out_view, '\n')
-        append(out_view, "=" * 79)
+                    vlib.append(out_view, "\t%s\t\t\t%s\n" % _
+                                    (self.view.settings().get(k), "Session"))
+                vlib.append(out_view, '\n')
+        vlib.append(out_view, "=" * 79)
 
 
 class GetAllCommandsCommand(sublime_plugin.TextCommand):
@@ -170,4 +151,4 @@ class GetAllCommandsCommand(sublime_plugin.TextCommand):
 
         v = self.view.window().new_file()
         v.set_scratch(True)
-        append(v, txt)
+        vlib.append(v, txt)
