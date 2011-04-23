@@ -26,7 +26,7 @@ Getting Started
 Download the following items:
 
    * \ `Latest release`_ of SublimeCMD.
-   * Optionally (recommended), `AAAPackageDev`_.
+   * \ `AAAPackageDev`_ (dependency).
    * Optionally, `UberSelection`_.
    * Optionally, `PowershellUtils`_.
 
@@ -35,10 +35,7 @@ Download the following items:
 .. _UberSelection: https://bitbucket.org/guillermooo/uberselection/src
 .. _PowershellUtils: https://bitbucket.org/guillermooo/powershellutils/src
 
-SublimeCMD will eventually depend on AAAPackageDev, so it is recommended that
-you install that package too.
-
-Now install all downloaded ``.sublime-package``\ s:
+Install all downloaded ``.sublime-package``\ s:
 
    - If you're running a full installation, simply double click on the file.
    - If you're running a portable installation, perform a `manual installation`_.
@@ -66,7 +63,7 @@ Intrinsic Commands
 
 Syntax:
 
-   - ``<COMMAND>[<MODIFIER>] <ARGUMENTS>``
+   - ``<COMMAND>[<MODIFIERS>] <ARGUMENTS>``
 
 At the moment, an argument is always required, even if it's ignored. Some
 arguments may be simple patterns like ``hell? world`` or ``hell? w*``.
