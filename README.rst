@@ -122,3 +122,15 @@ This command runs the given argument as a window command.
    run!? .
 
 This command shows all found commands. Note the argument is ignored.
+
+
+Powershell Commands
+*******************
+
+Precede the command with ``r!``.
+
+
+UberSelection Commands
+**********************
+
+Type the command normally.
