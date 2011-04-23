@@ -61,11 +61,6 @@ def parse_cmd(view, cmd):
     }
 
 
-
-def starts_with_any(s, sequence):
-    return any(map(s.startswith, sequence))
-
-
 def parse_and_dispatch(view, raw_cmd):
     """Parses a command and dispatches it.
     """
@@ -75,7 +70,7 @@ def parse_and_dispatch(view, raw_cmd):
         return
     
     if not starts_with_any(raw_cmd, ['set', 'key', 'run']):
-        view.run_command("uber_selection", {"command": raw_cmd[1:]})
+        view.run_command("uber_selection", {"command": raw_cmd})
         return
 
     try:
