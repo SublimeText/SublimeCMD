@@ -10,6 +10,7 @@ import contextlib
 import cmd_parser
 
 import sublime_lib.view as vlib
+from sublime_lib.view import append
 
 
 TOKEN_TARGET_APPLICATION = 0
@@ -97,9 +98,17 @@ def to_json_type(v):
 class SublimeCmdCommand(sublime_plugin.TextCommand):
     def run(self, edit):
         self.window = self.view.window()
-        self.window.show_input_panel('Sublime CMD:', '', self.on_done, None, None)
+        v = self.window.show_input_panel('Sublime CMD:',
+                                    '',
+                                    self.on_done, None, None)
+        # Remember last command.
+        content = getattr(self, 'last_cmd', '')
+        if content:
+            append(v, content)
+            v.sel().add(sublime.Region(0, v.size()))
 
     def on_done(self, s):
+        self.last_cmd = s
         cmd_parser.parse_and_dispatch(self.view, s)
 
 

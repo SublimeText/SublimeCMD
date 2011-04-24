@@ -65,8 +65,12 @@ def parse_and_dispatch(view, raw_cmd):
     """Parses a command and dispatches it.
     """
 
-    if raw_cmd.startswith('r!'):
-        view.run_command("run_powershell", {"command": raw_cmd[2:]})
+    if starts_with_any(raw_cmd, ('r!', '!')):
+        if raw_cmd.startswith('!'):
+            view.run_command("run_powershell", {"command": raw_cmd[1:],
+                                                "as_filter": False})
+        else:
+            view.run_command("run_powershell", {"command": raw_cmd[2:]})
         return
     
     if not starts_with_any(raw_cmd, ['set', 'key', 'run']):
